@@ -6,7 +6,7 @@ export interface Letter {
   open_date: string;
 }
 
-const START_DATE = new Date('2026-03-28T00:00:00'); // Changed to yesterday for testing
+const START_DATE = new Date('2026-04-12T12:00:00'); // הוספתי שעה 12:00 כדי למנוע בעיות של אזורי זמן
 
 const mockSenders = [
   "יוסי", "דנה", "אמא ואבא", "סבתא רחל", "רון", "מיכל", "דניאל", "שיר", "עומר", "נועה",

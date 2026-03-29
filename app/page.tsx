@@ -31,7 +31,7 @@ export default function Home() {
 
       <div className="w-full max-w-6xl mx-auto space-y-20 relative z-10 px-4 sm:px-6 lg:px-8">
         <header className="text-center space-y-12 mt-4 flex flex-col items-center">
-          <FlipClock targetDate="2026-05-12T00:00:00" />
+          <FlipClock targetDate="2026-05-12T19:00:00" />
           
           <div className="space-y-4">
             <h1 className="text-7xl md:text-9xl font-handwriting font-bold text-[#1a1a1a] tracking-wide pb-4 drop-shadow-md">
@@ -79,8 +79,8 @@ export default function Home() {
                     {!isLocked ? (
                       <span className="text-2xl md:text-3xl font-handwriting text-[#b56576] font-bold">מאת: {letter.sender}</span>
                     ) : (
-                      <span className="text-2xl md:text-3xl font-handwriting text-gray-600 font-bold">
-                        {openDate.toLocaleDateString("he-IL").slice(0, 5)}
+                      <span className="text-xl md:text-2xl font-handwriting text-gray-600 font-bold whitespace-nowrap">
+                        {openDate.toLocaleDateString("he-IL")}
                       </span>
                     )}
                   </div>

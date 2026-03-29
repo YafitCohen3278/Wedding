@@ -2,7 +2,7 @@ const QRCode = require('qrcode');
 const fs = require('fs');
 const path = require('path');
 
-const BASE_URL = 'http://localhost:3000/letter';
+const BASE_URL = 'https://wedding-coral-eight.vercel.app/letter';
 const OUTPUT_DIR = path.join(__dirname, '../public/qrcodes');
 
 if (!fs.existsSync(OUTPUT_DIR)) {
@@ -17,7 +17,7 @@ async function generateQRCodes() {
     try {
       await QRCode.toFile(filename, url, {
         color: {
-          dark: '#e11d48', // rose-600
+          dark: '#b56576', // הצבע הוורוד-כהה של האתר
           light: '#ffffff',
         },
         width: 300,
