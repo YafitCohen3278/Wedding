@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-dusty-pink: #dca5a5;
+  --color-dusty-pink-light: #f5e6e8;
+  --color-accent: #b56576;
+  --color-accent-light: #d58996;
+  --color-deep-black: #1a1a1a;
+  
+  --font-handwriting: var(--font-handwriting);
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .text-shadow-accent {
+    text-shadow: 0 2px 10px rgba(181, 101, 118, 0.3);
+  }
+  .box-shadow-accent {
+    box-shadow: 0 8px 32px rgba(181, 101, 118, 0.15);
+  }
+  .hover-glow-accent:hover {
+    box-shadow: 0 0 20px rgba(181, 101, 118, 0.4);
+    border-color: var(--color-accent);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-dusty-pink-light);
+  color: var(--color-deep-black);
+  font-family: var(--font-handwriting);
+}
+
+h1, h2, h3, h4, h5, h6, .font-handwriting, .font-serif {
+  font-family: var(--font-handwriting);
+}
+
+/* Flip clock specific styles */
+.flip-card {
+  perspective: 1000px;
+}
+.flip-card-inner {
+  transform-style: preserve-3d;
+}
+.flip-card-front, .flip-card-back {
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  transform: rotateX(180deg);
 }
