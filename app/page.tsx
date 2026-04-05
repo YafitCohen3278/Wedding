@@ -66,7 +66,7 @@ export default function Home() {
                     />
                   </div>
                   
-                  <div className="text-center flex flex-col items-center gap-0 absolute bottom-[-10px] md:bottom-[-15px] z-20">
+                  <div className="text-center flex flex-col items-center gap-0 absolute top-[75%] md:top-[80%] z-20 w-full">
                     <div className="flex items-center justify-center gap-2">
                       <span className="text-4xl md:text-5xl font-handwriting font-bold text-[#1a1a1a]">יום {letter.id}</span>
                       {isLocked ? (

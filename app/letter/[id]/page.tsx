@@ -50,7 +50,7 @@ export default async function LetterPage({ params }: { params: Promise<{ id: str
           {isLocked ? (
             <LockedMessage openDate={letter.open_date} />
           ) : (
-            <LetterContent title={letter.title} sender={letter.sender} contentUrl={letter.content_url} />
+            <LetterContent title={letter.title} sender={letter.sender} contentUrl={letter.content_url} contentText={letter.content_text} videoUrl={letter.video_url} />
           )}
         </div>
       </div>
