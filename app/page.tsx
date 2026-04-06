@@ -35,7 +35,7 @@ export default function Home() {
           
           <div className="space-y-4">
             <h1 className="text-7xl md:text-9xl font-handwriting font-bold text-[#1a1a1a] tracking-wide pb-4 drop-shadow-md">
-              המסע שלנו לחופה
+              עוד קצת וזה קורה...
             </h1>
             <p className="text-4xl text-[#1a1a1a]/80 font-handwriting max-w-2xl mx-auto drop-shadow-sm">
               מתרגשים וסופרים את הימים...

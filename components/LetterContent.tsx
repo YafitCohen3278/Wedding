@@ -51,7 +51,7 @@ export function LetterContent({ title, sender, contentUrl, contentText, videoUrl
         <p className="text-3xl font-handwriting text-[#b56576] italic">מאת: {sender}</p>
       </div>
       
-      {videoUrl ? (
+      {videoUrl && (
         <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-[#b56576]/50">
           <iframe
             src={videoUrl}
@@ -63,13 +63,17 @@ export function LetterContent({ title, sender, contentUrl, contentText, videoUrl
             className="absolute top-0 left-0 w-full h-full"
           ></iframe>
         </div>
-      ) : contentText ? (
+      )}
+      
+      {contentText && (
         <div className="w-full bg-white/60 rounded-xl p-6 md:p-10 shadow-inner border border-[#b56576]/20 text-right">
           <p className="text-2xl md:text-3xl font-handwriting text-[#1a1a1a] leading-relaxed whitespace-pre-wrap">
             {contentText}
           </p>
         </div>
-      ) : contentUrl ? (
+      )}
+
+      {contentUrl && !videoUrl && (
         <div className="relative w-full min-h-[400px] md:min-h-[600px] rounded-xl overflow-hidden shadow-2xl border border-[#b56576]/50 bg-white/50">
           <Image
             src={contentUrl}
@@ -80,7 +84,7 @@ export function LetterContent({ title, sender, contentUrl, contentText, videoUrl
             priority
           />
         </div>
-      ) : null}
+      )}
     </RomanticCard>
   );
 }
