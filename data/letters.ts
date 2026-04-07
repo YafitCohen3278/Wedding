@@ -28,7 +28,7 @@ export const letters: Letter[] = Array.from({ length: 30 }).map((_, i) => {
 
   // מכתב מספר 1 - שני
   if (id === 1) {
-    sender = "שני";
+    sender = "שני כהן";
     content_url = null;
     content_text = `אביטלוש
 אני לא מאמינה שאני כותבת לך לספירת הגומר… איזה הזיה! איך הזמן טס 😳
@@ -233,7 +233,7 @@ export const letters: Letter[] = Array.from({ length: 30 }).map((_, i) => {
 
   // מכתב מספר 13 - שני כהן
   if (id === 13) {
-    sender = "שני כהן";
+    sender = "שנינוש כהן";
     content_url = "https://res.cloudinary.com/dndue6ry6/image/upload/v1775382519/שני_ya9rqj.jpg";
   }
 
@@ -316,6 +316,12 @@ export const letters: Letter[] = Array.from({ length: 30 }).map((_, i) => {
 אני אוהבת אותך,
 ומאחלת לך חיים מלאים באהבה, שמחה ואושר אמיתי 
 שרה🤍`;
+  }
+
+  // מכתב מספר 19 - תהילה האחיינית
+  if (id === 19) {
+    sender = "תהילה האחיינית";
+    content_url = "/images/תהילה.jpeg";
   }
 
   // מכתב מספר 20 - אפרת מאושר

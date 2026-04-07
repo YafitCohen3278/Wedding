@@ -29,21 +29,21 @@ export default function Home() {
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#d58996]/20 blur-3xl" />
       </div>
 
-      <div className="w-full max-w-6xl mx-auto space-y-20 relative z-10 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-6xl mx-auto space-y-12 relative z-10 px-4 sm:px-6 lg:px-8">
         <header className="text-center space-y-12 mt-4 flex flex-col items-center">
           <FlipClock targetDate="2026-05-12T19:00:00" />
           
-          <div className="space-y-4">
-            <h1 className="text-7xl md:text-9xl font-handwriting font-bold text-[#1a1a1a] tracking-wide pb-4 drop-shadow-md">
+          <div className="space-y-4 w-full overflow-hidden">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-handwriting font-bold text-[#1a1a1a] tracking-wide pb-4 drop-shadow-md whitespace-nowrap">
               עוד קצת וזה קורה...
             </h1>
-            <p className="text-4xl text-[#1a1a1a]/80 font-handwriting max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-3xl md:text-4xl text-[#1a1a1a]/80 font-handwriting max-w-2xl mx-auto drop-shadow-sm">
               מתרגשים וסופרים את הימים...
             </p>
           </div>
         </header>
 
-        <section className="space-y-0 pb-16 mt-8">
+        <section className="space-y-0 pb-16 mt-0">
           <div className="flex items-center justify-center text-4xl font-handwriting font-bold text-[#1a1a1a] mb-0">
             <h3>המכתבים שלנו</h3>
           </div>
