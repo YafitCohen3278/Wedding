@@ -36,11 +36,11 @@ export default function Home() {
           <div className="space-y-4 w-full overflow-hidden">
             <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-handwriting font-bold text-[#1a1a1a] tracking-wide pb-4 drop-shadow-md whitespace-nowrap">
               עוד קצת וזה קורה...
-            </h1>
+          </h1>
             <p className="text-3xl md:text-4xl text-[#1a1a1a]/80 font-handwriting max-w-2xl mx-auto drop-shadow-sm">
               מתרגשים וסופרים את הימים...
-            </p>
-          </div>
+          </p>
+        </div>
         </header>
 
         <section className="space-y-0 pb-16 mt-0">
@@ -129,6 +129,6 @@ export default function Home() {
       
       {/* המשך האתר (כ-5 ס"מ) */}
       <div className="w-full h-24 bg-[#f5e6e8]" />
-    </main>
+      </main>
   );
 }

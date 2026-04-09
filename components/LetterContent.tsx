@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 
 export function LetterContent({ title, sender, contentUrl, contentText, videoUrl }: { title: string; sender: string; contentUrl: string | null; contentText?: string; videoUrl?: string }) {
+  const textBlocks = contentText?.split('\n\n<<<NEXT_LETTER>>>\n\n').filter((block) => block.trim().length > 0) ?? [];
+
   useEffect(() => {
     // Fire confetti when the component mounts (letter is opened)
     const duration = 1500; // Changed from 3000 to 1500 (1.5 seconds)
@@ -65,11 +67,15 @@ export function LetterContent({ title, sender, contentUrl, contentText, videoUrl
         </div>
       )}
       
-      {contentText && (
-        <div className="w-full bg-white/60 rounded-xl p-6 md:p-10 shadow-inner border border-[#b56576]/20 text-right">
-          <p className="text-2xl md:text-3xl font-handwriting text-[#1a1a1a] leading-relaxed whitespace-pre-wrap">
-            {contentText}
-          </p>
+      {textBlocks.length > 0 && (
+        <div className="space-y-6">
+          {textBlocks.map((block, index) => (
+            <div key={index} className="w-full bg-white/60 rounded-xl p-6 md:p-10 shadow-inner border border-[#b56576]/20 text-right">
+              <p className="text-2xl md:text-3xl font-handwriting text-[#1a1a1a] leading-relaxed whitespace-pre-wrap">
+                {block}
+              </p>
+            </div>
+          ))}
         </div>
       )}
 
