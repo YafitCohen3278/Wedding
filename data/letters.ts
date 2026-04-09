@@ -77,7 +77,7 @@ export const letters: Letter[] = Array.from({ length: 30 }).map((_, i) => {
 
   // מכתב מספר 3 - תהילה מ
   if (id === 3) {
-    sender = "תהילה מ";
+    sender = "תהילה מורגנשטרן";
     content_url = null;
     content_text = `אביטלושששש🩷
 אמאלה לא נקלט!!
