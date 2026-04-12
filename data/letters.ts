@@ -8,7 +8,7 @@ export interface Letter {
   open_date: string;
 }
 
-const START_DATE = new Date('2026-03-01T12:00:00'); // תאריך זמני בעבר כדי שתוכלי לראות את כל המכתבים פתוחים
+const FIRST_LETTER_DAY = new Date(2026, 3, 12);
 
 const mockSenders = [
   "יוסי", "דנה", "אמא ואבא", "סבתא רחל", "רון", "מיכל", "דניאל", "שיר", "עומר", "נועה",
@@ -18,7 +18,7 @@ const mockSenders = [
 
 export const letters: Letter[] = Array.from({ length: 30 }).map((_, i) => {
   const id = i + 1;
-  const openDate = new Date(START_DATE);
+  const openDate = new Date(FIRST_LETTER_DAY);
   openDate.setDate(openDate.getDate() + i);
 
   let sender = mockSenders[i];
@@ -606,6 +606,6 @@ export const letters: Letter[] = Array.from({ length: 30 }).map((_, i) => {
     content_url,
     content_text,
     video_url,
-    open_date: openDate.toISOString().split('T')[0],
+    open_date: `${openDate.getFullYear()}-${String(openDate.getMonth() + 1).padStart(2, "0")}-${String(openDate.getDate()).padStart(2, "0")}`,
   };
 });

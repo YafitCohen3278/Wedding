@@ -1,21 +1,9 @@
 import { Lock } from 'lucide-react';
 import { RomanticCard } from './RomanticCard';
+import { getLockedTimeMessage } from '@/lib/letterUnlock';
 
 export function LockedMessage({ openDate }: { openDate: string }) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const targetDate = new Date(openDate);
-  targetDate.setHours(0, 0, 0, 0);
-  
-  const diffTime = targetDate.getTime() - today.getTime();
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-  let timeMessage = `המכתב ייפתח בעוד ${diffDays} ימים`;
-  if (diffDays === 1) {
-    timeMessage = "המכתב ייפתח מחר";
-  } else if (diffDays === 2) {
-    timeMessage = "המכתב ייפתח מחרתיים";
-  }
+  const timeMessage = getLockedTimeMessage(openDate);
 
   return (
     <RomanticCard className="flex flex-col items-center justify-center text-center space-y-6 max-w-md mx-auto min-h-[300px]">

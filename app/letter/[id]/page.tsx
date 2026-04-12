@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation';
 import { letters } from '@/data/letters';
+import { parseCalendarDate } from '@/lib/parseCalendarDate';
+import { isLetterUnlocked } from '@/lib/letterUnlock';
 import { LockedMessage } from '@/components/LockedMessage';
 import { LetterContent } from '@/components/LetterContent';
 import Link from 'next/link';
@@ -9,6 +11,8 @@ export function generateStaticParams() {
   return letters.map((l) => ({ id: l.id.toString() }));
 }
 
+export const dynamic = 'force-dynamic';
+
 export default async function LetterPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const letter = letters.find((l) => l.id === parseInt(id, 10));
@@ -17,10 +21,8 @@ export default async function LetterPage({ params }: { params: Promise<{ id: str
     notFound();
   }
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const openDate = new Date(letter.open_date);
-  const isLocked = today < openDate;
+  const openDate = parseCalendarDate(letter.open_date);
+  const isLocked = !isLetterUnlocked(letter.open_date);
 
   return (
     <main className="min-h-screen bg-[#f5e6e8] py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center relative overflow-hidden">
