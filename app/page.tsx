@@ -3,14 +3,19 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { letters } from "@/data/letters";
 import { parseCalendarDate } from "@/lib/parseCalendarDate";
 import { isLetterUnlocked } from "@/lib/letterUnlock";
 import { QrCode, Lock, Unlock } from "lucide-react";
 import { FlipClock } from "@/components/FlipClock";
 
+const PREVIEW_TOKEN = "yafit2026";
+
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const searchParams = useSearchParams();
+  const hasPreviewAccess = searchParams.get("preview") === PREVIEW_TOKEN;
 
   useEffect(() => {
     setMounted(true);
@@ -52,10 +57,14 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-8 gap-y-12 pt-0 mt-[-10px]">
             {letters.map((letter, i) => {
               const openDate = parseCalendarDate(letter.open_date);
-              const isLocked = !isLetterUnlocked(letter.open_date);
+              const isLocked = !hasPreviewAccess && !isLetterUnlocked(letter.open_date);
 
               return (
-                <Link key={letter.id} href={`/letter/${letter.id}`} className="flex flex-col items-center group relative">
+                <Link
+                  key={letter.id}
+                  href={hasPreviewAccess ? `/letter/${letter.id}?preview=${PREVIEW_TOKEN}` : `/letter/${letter.id}`}
+                  className="flex flex-col items-center group relative"
+                >
                   <div className="relative w-72 h-72 md:w-80 md:h-80 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2 z-10">
                     {/* כאן נכנסת התמונה המותאמת אישית מוגדלת */}
                     <Image

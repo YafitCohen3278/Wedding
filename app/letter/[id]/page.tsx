@@ -7,22 +7,32 @@ import { LetterContent } from '@/components/LetterContent';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
+const PREVIEW_TOKEN = 'yafit2026';
+
 export function generateStaticParams() {
   return letters.map((l) => ({ id: l.id.toString() }));
 }
 
 export const dynamic = 'force-dynamic';
 
-export default async function LetterPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function LetterPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ preview?: string }>;
+}) {
   const { id } = await params;
+  const { preview } = await searchParams;
   const letter = letters.find((l) => l.id === parseInt(id, 10));
+  const hasPreviewAccess = preview === PREVIEW_TOKEN;
 
   if (!letter) {
     notFound();
   }
 
   const openDate = parseCalendarDate(letter.open_date);
-  const isLocked = !isLetterUnlocked(letter.open_date);
+  const isLocked = !hasPreviewAccess && !isLetterUnlocked(letter.open_date);
 
   return (
     <main className="min-h-screen bg-[#f5e6e8] py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center relative overflow-hidden">
