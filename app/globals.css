@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "GveretLevin";
+  src: url("/fonts/gveret-levin/GveretLevinAlefAlefAlef/web/GveretLevinAlefAlefAlef-Regular.woff2") format("woff2"),
+       url("/fonts/gveret-levin/GveretLevinAlefAlefAlef/web/GveretLevinAlefAlefAlef-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --color-dusty-pink: #dca5a5;
   --color-dusty-pink-light: #f5e6e8;
@@ -32,6 +41,10 @@ body {
 
 h1, h2, h3, h4, h5, h6, .font-handwriting, .font-serif {
   font-family: var(--font-handwriting);
+}
+
+.font-letter30 {
+  font-family: "GveretLevin", var(--font-handwriting), sans-serif;
 }
 
 /* Flip clock specific styles */

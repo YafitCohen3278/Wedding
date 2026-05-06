@@ -47,22 +47,26 @@ export function LetterContent({ letterId, title, sender, contentUrl, contentText
 
   if (letterId === 30) {
     return (
-      <div className="relative max-w-4xl mx-auto min-h-[70vh] flex items-center justify-center overflow-hidden rounded-[2rem] bg-gradient-to-b from-[#ffe7ef] via-[#ffd8e6] to-[#f8c4d8] border-4 border-white/50 shadow-[0_25px_70px_rgba(181,101,118,0.35)]">
+      <div className="relative max-w-5xl mx-auto min-h-[72vh] md:min-h-[78vh] flex items-center justify-center overflow-hidden rounded-[2rem] border-2 border-white/40 shadow-[0_25px_70px_rgba(181,101,118,0.35)]">
+        <Image
+          src="/images/letter30.jpg"
+          alt="רקע מכתב 30"
+          fill
+          priority
+          className="object-cover opacity-35"
+          sizes="(max-width: 768px) 100vw, 1200px"
+        />
+        <div className="absolute inset-0 bg-[#f5e6e8]/35" />
         <div className="absolute inset-0 pointer-events-none">
-          <span className="absolute top-8 left-8 text-5xl md:text-7xl animate-bounce">🎈</span>
-          <span className="absolute top-10 right-8 text-5xl md:text-7xl animate-bounce [animation-delay:200ms]">🎈</span>
-          <span className="absolute top-28 left-1/4 text-4xl md:text-6xl animate-bounce [animation-delay:500ms]">🎉</span>
-          <span className="absolute top-24 right-1/4 text-4xl md:text-6xl animate-bounce [animation-delay:800ms]">🎊</span>
-          <span className="absolute bottom-10 left-10 text-5xl md:text-7xl animate-bounce [animation-delay:300ms]">🎈</span>
-          <span className="absolute bottom-12 right-10 text-5xl md:text-7xl animate-bounce [animation-delay:650ms]">🎈</span>
-          <span className="absolute bottom-28 left-1/3 text-4xl md:text-6xl animate-pulse">✨</span>
-          <span className="absolute bottom-24 right-1/3 text-4xl md:text-6xl animate-pulse [animation-delay:400ms]">✨</span>
+          <span className="absolute top-8 left-8 text-5xl md:text-7xl animate-pulse">🎆</span>
+          <span className="absolute top-10 right-8 text-5xl md:text-7xl animate-pulse [animation-delay:260ms]">🎇</span>
+          <span className="absolute top-24 left-1/4 text-4xl md:text-6xl animate-pulse [animation-delay:500ms]">✨</span>
+          <span className="absolute top-24 right-1/4 text-4xl md:text-6xl animate-pulse [animation-delay:760ms]">✨</span>
+          <span className="absolute bottom-10 left-10 text-5xl md:text-7xl animate-pulse [animation-delay:350ms]">🎇</span>
+          <span className="absolute bottom-10 right-10 text-5xl md:text-7xl animate-pulse [animation-delay:650ms]">🎆</span>
         </div>
-        <div className="relative z-10 px-6 py-12 md:px-10 text-center text-[#7a2340]">
-          <h1 className="text-6xl md:text-8xl font-handwriting font-bold leading-tight">מחר החתונההה!!!</h1>
-          <p className="mt-4 text-5xl md:text-7xl font-handwriting font-bold">מזל טובבב ענקקק 💍</p>
-          <p className="mt-8 text-3xl md:text-5xl font-handwriting whitespace-pre-wrap leading-relaxed">{contentText}</p>
-          <p className="mt-8 text-3xl md:text-4xl font-handwriting text-[#b56576]">מאת: {sender}</p>
+        <div className="relative z-10 px-6 py-12 md:px-10 text-center text-[#5f1433]">
+          <h1 className="font-letter30 text-7xl md:text-9xl leading-[0.95] drop-shadow-[0_4px_18px_rgba(255,255,255,0.85)]">מחר זה קורה</h1>
         </div>
       </div>
     );
