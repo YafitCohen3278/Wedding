@@ -47,26 +47,18 @@ export function LetterContent({ letterId, title, sender, contentUrl, contentText
 
   if (letterId === 30) {
     return (
-      <div className="relative max-w-5xl mx-auto min-h-[72vh] md:min-h-[78vh] flex items-center justify-center overflow-hidden rounded-[2rem] border-2 border-white/40 shadow-[0_25px_70px_rgba(181,101,118,0.35)]">
+      <div className="relative w-screen min-h-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] flex items-center justify-center overflow-hidden">
         <Image
           src="/images/letter30.jpg"
           alt="רקע מכתב 30"
           fill
           priority
-          className="object-cover opacity-35"
-          sizes="(max-width: 768px) 100vw, 1200px"
+          className="object-cover opacity-40"
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[#f5e6e8]/35" />
-        <div className="absolute inset-0 pointer-events-none">
-          <span className="absolute top-8 left-8 text-5xl md:text-7xl animate-pulse">🎆</span>
-          <span className="absolute top-10 right-8 text-5xl md:text-7xl animate-pulse [animation-delay:260ms]">🎇</span>
-          <span className="absolute top-24 left-1/4 text-4xl md:text-6xl animate-pulse [animation-delay:500ms]">✨</span>
-          <span className="absolute top-24 right-1/4 text-4xl md:text-6xl animate-pulse [animation-delay:760ms]">✨</span>
-          <span className="absolute bottom-10 left-10 text-5xl md:text-7xl animate-pulse [animation-delay:350ms]">🎇</span>
-          <span className="absolute bottom-10 right-10 text-5xl md:text-7xl animate-pulse [animation-delay:650ms]">🎆</span>
-        </div>
-        <div className="relative z-10 px-6 py-12 md:px-10 text-center text-[#5f1433]">
-          <h1 className="font-letter30 text-7xl md:text-9xl leading-[0.95] drop-shadow-[0_4px_18px_rgba(255,255,255,0.85)]">מחר זה קורה</h1>
+        <div className="absolute inset-0 bg-[#f5e6e8]/25" />
+        <div className="relative z-10 px-6 py-12 md:px-10 text-center text-[#f3a4bf]">
+          <h1 className="font-letter30 text-7xl md:text-9xl leading-[0.95] drop-shadow-[0_4px_18px_rgba(255,255,255,0.9)]">מחר זה קורה...</h1>
         </div>
       </div>
     );
