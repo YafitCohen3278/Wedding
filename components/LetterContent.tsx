@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 
 export function LetterContent({ title, sender, contentUrl, contentText, videoUrl }: { title: string; sender: string; contentUrl: string | null; contentText?: string; videoUrl?: string }) {
-  const textBlocks = contentText?.split('\n\n<<<NEXT_LETTER>>>\n\n').filter((block) => block.trim().length > 0) ?? [];
+  const textBlocks = contentText?.split(/\r?\n\r?\n<<<NEXT_LETTER>>>\r?\n\r?\n/).filter((block) => block.trim().length > 0) ?? [];
 
   useEffect(() => {
     // Fire confetti when the component mounts (letter is opened)
