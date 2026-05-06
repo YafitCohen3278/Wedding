@@ -3,22 +3,21 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import { letters } from "@/data/letters";
 import { parseCalendarDate } from "@/lib/parseCalendarDate";
 import { isLetterUnlocked } from "@/lib/letterUnlock";
-import { QrCode, Lock, Unlock } from "lucide-react";
+import { Lock, Unlock } from "lucide-react";
 import { FlipClock } from "@/components/FlipClock";
 
 const PREVIEW_TOKEN = "yafit2026";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
-  const searchParams = useSearchParams();
-  const hasPreviewAccess = searchParams.get("preview") === PREVIEW_TOKEN;
+  const [hasPreviewAccess, setHasPreviewAccess] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    setHasPreviewAccess(new URLSearchParams(window.location.search).get("preview") === PREVIEW_TOKEN);
   }, []);
 
   if (!mounted) return null;
@@ -55,7 +54,7 @@ export default function Home() {
             <h3>המכתבים שלנו</h3>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-8 gap-y-12 pt-0 mt-[-10px]">
-            {letters.map((letter, i) => {
+            {letters.map((letter) => {
               const openDate = parseCalendarDate(letter.open_date);
               const isLocked = !hasPreviewAccess && !isLetterUnlocked(letter.open_date);
 

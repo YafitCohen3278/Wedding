@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 import { letters } from '@/data/letters';
-import { parseCalendarDate } from '@/lib/parseCalendarDate';
 import { isLetterUnlocked } from '@/lib/letterUnlock';
 import { LockedMessage } from '@/components/LockedMessage';
 import { LetterContent } from '@/components/LetterContent';
@@ -31,7 +30,6 @@ export default async function LetterPage({
     notFound();
   }
 
-  const openDate = parseCalendarDate(letter.open_date);
   const isLocked = !hasPreviewAccess && !isLetterUnlocked(letter.open_date);
 
   return (
