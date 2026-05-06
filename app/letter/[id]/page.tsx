@@ -31,9 +31,10 @@ export default async function LetterPage({
   }
 
   const isLocked = !hasPreviewAccess && !isLetterUnlocked(letter.open_date);
+  const isSpecialThirty = letter.id === 30 && !isLocked;
 
   return (
-    <main className="min-h-screen bg-[#f5e6e8] py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center relative overflow-hidden">
+    <main className={`min-h-screen bg-[#f5e6e8] ${isSpecialThirty ? 'py-0 px-0 overflow-hidden' : 'py-12 px-4 sm:px-6 lg:px-8'} flex flex-col items-center justify-center relative overflow-hidden`}>
       {/* Background Image Support */}
       <div 
         className="absolute inset-0 z-0 opacity-20 mix-blend-multiply bg-cover bg-center bg-no-repeat"
@@ -45,7 +46,7 @@ export default async function LetterPage({
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#d58996]/20 blur-3xl" />
       </div>
 
-      <div className="w-full max-w-4xl mx-auto relative z-10">
+      <div className={`w-full ${isSpecialThirty ? 'max-w-none' : 'max-w-4xl mx-auto'} relative z-10`}>
         <div className="absolute -top-16 right-0 md:-top-20 md:-right-8">
           <Link
             href="/"
@@ -56,7 +57,7 @@ export default async function LetterPage({
           </Link>
         </div>
 
-        <div className="mt-8">
+        <div className={isSpecialThirty ? '' : 'mt-8'}>
           {isLocked ? (
             <LockedMessage openDate={letter.open_date} />
           ) : (

@@ -9,24 +9,34 @@ export function LetterContent({ letterId, title, sender, contentUrl, contentText
   const textBlocks = contentText?.split(/\r?\n\r?\n<<<NEXT_LETTER>>>\r?\n\r?\n/).filter((block) => block.trim().length > 0) ?? [];
 
   useEffect(() => {
-    const duration = letterId === 30 ? 3500 : 1500;
+    const duration = letterId === 30 ? 5000 : 1500;
     const end = Date.now() + duration;
 
     const frame = () => {
       confetti({
-        particleCount: letterId === 30 ? 12 : 5,
+        particleCount: letterId === 30 ? 18 : 5,
         angle: 60,
-        spread: letterId === 30 ? 90 : 55,
+        spread: letterId === 30 ? 120 : 55,
         origin: { x: 0 },
         colors: ['#b56576', '#dca5a5', '#d58996', '#f5e6e8']
       });
       confetti({
-        particleCount: letterId === 30 ? 12 : 5,
+        particleCount: letterId === 30 ? 18 : 5,
         angle: 120,
-        spread: letterId === 30 ? 90 : 55,
+        spread: letterId === 30 ? 120 : 55,
         origin: { x: 1 },
         colors: ['#b56576', '#dca5a5', '#d58996', '#f5e6e8']
       });
+      if (letterId === 30) {
+        confetti({
+          particleCount: 22,
+          startVelocity: 55,
+          spread: 80,
+          ticks: 220,
+          origin: { x: Math.random(), y: 0.9 },
+          colors: ['#ff6fa3', '#ff9dc3', '#ffd4e5', '#ffffff']
+        });
+      }
 
       if (Date.now() < end) {
         requestAnimationFrame(frame);
@@ -47,7 +57,7 @@ export function LetterContent({ letterId, title, sender, contentUrl, contentText
 
   if (letterId === 30) {
     return (
-      <div className="relative w-screen min-h-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] flex items-center justify-center overflow-hidden">
+      <div className="relative w-screen h-[100svh] left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] flex items-center justify-center overflow-hidden">
         <Image
           src="/images/letter30.jpg"
           alt="רקע מכתב 30"
@@ -57,7 +67,7 @@ export function LetterContent({ letterId, title, sender, contentUrl, contentText
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-[#f5e6e8]/25" />
-        <div className="relative z-10 px-6 py-12 md:px-10 text-center text-[#f3a4bf]">
+        <div className="relative z-10 px-6 py-12 md:px-10 text-center text-[#d86a95]">
           <h1 className="font-letter30 text-7xl md:text-9xl leading-[0.95] drop-shadow-[0_4px_18px_rgba(255,255,255,0.9)]">מחר זה קורה...</h1>
         </div>
       </div>
