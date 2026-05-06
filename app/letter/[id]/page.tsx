@@ -60,7 +60,7 @@ export default async function LetterPage({
           {isLocked ? (
             <LockedMessage openDate={letter.open_date} />
           ) : (
-            <LetterContent title={letter.title} sender={letter.sender} contentUrl={letter.content_url} contentText={letter.content_text} videoUrl={letter.video_url} />
+            <LetterContent letterId={letter.id} title={letter.title} sender={letter.sender} contentUrl={letter.content_url} contentText={letter.content_text} videoUrl={letter.video_url} />
           )}
         </div>
       </div>

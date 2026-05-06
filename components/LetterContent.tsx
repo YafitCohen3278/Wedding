@@ -5,26 +5,25 @@ import { RomanticCard } from './RomanticCard';
 import { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 
-export function LetterContent({ title, sender, contentUrl, contentText, videoUrl }: { title: string; sender: string; contentUrl: string | null; contentText?: string; videoUrl?: string }) {
+export function LetterContent({ letterId, title, sender, contentUrl, contentText, videoUrl }: { letterId: number; title: string; sender: string; contentUrl: string | null; contentText?: string; videoUrl?: string }) {
   const textBlocks = contentText?.split(/\r?\n\r?\n<<<NEXT_LETTER>>>\r?\n\r?\n/).filter((block) => block.trim().length > 0) ?? [];
 
   useEffect(() => {
-    // Fire confetti when the component mounts (letter is opened)
-    const duration = 1500; // Changed from 3000 to 1500 (1.5 seconds)
+    const duration = letterId === 30 ? 3500 : 1500;
     const end = Date.now() + duration;
 
     const frame = () => {
       confetti({
-        particleCount: 5,
+        particleCount: letterId === 30 ? 12 : 5,
         angle: 60,
-        spread: 55,
+        spread: letterId === 30 ? 90 : 55,
         origin: { x: 0 },
         colors: ['#b56576', '#dca5a5', '#d58996', '#f5e6e8']
       });
       confetti({
-        particleCount: 5,
+        particleCount: letterId === 30 ? 12 : 5,
         angle: 120,
-        spread: 55,
+        spread: letterId === 30 ? 90 : 55,
         origin: { x: 1 },
         colors: ['#b56576', '#dca5a5', '#d58996', '#f5e6e8']
       });
@@ -35,7 +34,7 @@ export function LetterContent({ title, sender, contentUrl, contentText, videoUrl
     };
     
     frame();
-  }, []);
+  }, [letterId]);
 
   if (!contentUrl && !contentText && !videoUrl) {
     return (
@@ -43,6 +42,29 @@ export function LetterContent({ title, sender, contentUrl, contentText, videoUrl
         <div className="text-6xl animate-pulse text-[#b56576]">💌</div>
         <h2 className="text-3xl font-handwriting font-semibold text-[#1a1a1a]">המכתב עדיין בהכנה 💌</h2>
       </RomanticCard>
+    );
+  }
+
+  if (letterId === 30) {
+    return (
+      <div className="relative max-w-4xl mx-auto min-h-[70vh] flex items-center justify-center overflow-hidden rounded-[2rem] bg-gradient-to-b from-[#ffe7ef] via-[#ffd8e6] to-[#f8c4d8] border-4 border-white/50 shadow-[0_25px_70px_rgba(181,101,118,0.35)]">
+        <div className="absolute inset-0 pointer-events-none">
+          <span className="absolute top-8 left-8 text-5xl md:text-7xl animate-bounce">🎈</span>
+          <span className="absolute top-10 right-8 text-5xl md:text-7xl animate-bounce [animation-delay:200ms]">🎈</span>
+          <span className="absolute top-28 left-1/4 text-4xl md:text-6xl animate-bounce [animation-delay:500ms]">🎉</span>
+          <span className="absolute top-24 right-1/4 text-4xl md:text-6xl animate-bounce [animation-delay:800ms]">🎊</span>
+          <span className="absolute bottom-10 left-10 text-5xl md:text-7xl animate-bounce [animation-delay:300ms]">🎈</span>
+          <span className="absolute bottom-12 right-10 text-5xl md:text-7xl animate-bounce [animation-delay:650ms]">🎈</span>
+          <span className="absolute bottom-28 left-1/3 text-4xl md:text-6xl animate-pulse">✨</span>
+          <span className="absolute bottom-24 right-1/3 text-4xl md:text-6xl animate-pulse [animation-delay:400ms]">✨</span>
+        </div>
+        <div className="relative z-10 px-6 py-12 md:px-10 text-center text-[#7a2340]">
+          <h1 className="text-6xl md:text-8xl font-handwriting font-bold leading-tight">מחר החתונההה!!!</h1>
+          <p className="mt-4 text-5xl md:text-7xl font-handwriting font-bold">מזל טובבב ענקקק 💍</p>
+          <p className="mt-8 text-3xl md:text-5xl font-handwriting whitespace-pre-wrap leading-relaxed">{contentText}</p>
+          <p className="mt-8 text-3xl md:text-4xl font-handwriting text-[#b56576]">מאת: {sender}</p>
+        </div>
+      </div>
     );
   }
 
